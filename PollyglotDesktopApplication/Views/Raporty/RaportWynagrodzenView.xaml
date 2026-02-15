@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="PollyglotDesktopApp.Views.Raporty.RaportWynagrodzenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinHeight="420"
+             MinWidth="700"
+             Background="White">
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Raport wynagrodzeń"
+                   FontSize="26"
+                   FontWeight="SemiBold" />
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="0,12,0,0"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Okres (YYYY-MM)"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" />
+            <ComboBox ItemsSource="{Binding Okresy}"
+                      SelectedItem="{Binding Okres, Mode=TwoWay}"
+                      Width="140"
+                      Margin="12,0,0,0" />
+            <Button Content="Oblicz"
+                    Command="{Binding ObliczCommand}"
+                    Margin="12,0,0,0"
+                    Padding="10,4" />
+            <Button Content="Eksport wynagrodzeń (CSV)"
+                    Command="{Binding EksportWynagrodzenCommand}"
+                    Margin="12,0,0,0"
+                    Padding="10,4" />
+        </StackPanel>
+
+        <Grid Grid.Row="2"
+              Margin="0,12,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="#f5f5f5"
+                    Padding="10"
+                    Margin="0,0,12,0"
+                    CornerRadius="4">
+                <StackPanel>
+                    <TextBlock Text="Łączna kwota"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding TotalKwota, StringFormat={}{0:N2}}"
+                               FontSize="20"
+                               FontWeight="SemiBold" />
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Background="#f5f5f5"
+                    Padding="10"
+                    CornerRadius="4">
+                <StackPanel>
+                    <TextBlock Text="Łącznie godzin"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding TotalGodzin, StringFormat={}{0:N2}}"
+                               FontSize="20"
+                               FontWeight="SemiBold" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Expander Grid.Row="3"
+                  Header="Analiza roczna"
+                  IsExpanded="False"
+                  Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Lektor"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding Lektorzy}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding WybranyLektorId, Mode=TwoWay}"
+                          Width="200"
+                          Margin="12,0,0,0" />
+                <TextBlock Text="Rok"
+                           FontWeight="Bold"
+                           Margin="24,0,0,0"
+                           VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding Lata}"
+                          SelectedItem="{Binding WybranyRok, Mode=TwoWay}"
+                          Width="100"
+                          Margin="12,0,0,0" />
+                <Button Content="Oblicz rocznie"
+                        Command="{Binding ObliczRocznieCommand}"
+                        Margin="24,0,0,0"
+                        Padding="8,4" />
+                <TextBlock Text="Zarobki roczne:"
+                           FontWeight="Bold"
+                           Margin="24,0,0,0"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="{Binding ZarobkiRoczne, StringFormat={}{0:N2}}"
+                           FontWeight="SemiBold"
+                           Margin="6,0,0,0"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+        </Expander>
+
+        <DataGrid Grid.Row="4"
+                  ItemsSource="{Binding Rows}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Lektor"
+                                    Binding="{Binding Imie}"
+                                    Width="120" />
+                <DataGridTextColumn Header="Nazwisko"
+                                    Binding="{Binding Nazwisko}"
+                                    Width="120" />
+                <DataGridTextColumn Header="Okres"
+                                    Binding="{Binding Okres}"
+                                    Width="100" />
+                <DataGridTextColumn Header="Liczba godzin"
+                                    Binding="{Binding LiczbaGodzin, StringFormat={}{0:N2}}"
+                                    Width="110" />
+                <DataGridTextColumn Header="Stawka"
+                                    Binding="{Binding StawkaGodzinowa, StringFormat={}{0:N2}}"
+                                    Width="110" />
+                <DataGridTextColumn Header="Kwota"
+                                    Binding="{Binding KwotaDoWyplaty, StringFormat={}{0:N2}}"
+                                    Width="120" />
+                <DataGridTextColumn Header="Status"
+                                    Binding="{Binding Status}"
+                                    Width="140" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

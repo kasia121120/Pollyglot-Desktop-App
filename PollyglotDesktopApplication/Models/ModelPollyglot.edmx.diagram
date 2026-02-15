@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3994be63ccc84022bfa2237d7035c8e0" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="PollyglotDBModel.Grupa" Width="1.5" PointX="4.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.GrupaUczen" Width="1.5" PointX="2.875" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Jezyk" Width="1.5" PointX="6.625" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Kurs" Width="1.5" PointX="1.125" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Lektor" Width="1.5" PointX="1.875" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.LektorJezyk" Width="1.5" PointX="9" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Obecnosc" Width="1.5" PointX="7.125" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Ocena" Width="1.5" PointX="5.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Platnosc" Width="1.5" PointX="4.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Podrecznik" Width="1.5" PointX="8.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.RodzajKursu" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Sala" Width="1.5" PointX="2.125" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Uczen" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Wynagrodzenie" Width="1.5" PointX="4.625" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PollyglotDBModel.Zajecia" Width="1.5" PointX="9.125" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Grupa__KursId__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Grupa__LektorId__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Grupa__Podreczni__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Grupa__SalaId__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__GrupaUcze__Grupa__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Zajecia__GrupaId__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK_Zajecia_Grupa" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__GrupaUcze__Uczen__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Kurs__JezykId__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__LektorJez__Jezyk__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Podreczni__Jezyk__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Kurs__RodzajKurs__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Platnosc__KursId__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__LektorJez__Lekto__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Wynagrodz__Lekto__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Zajecia__LektorI__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Obecnosc__UczenI__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Obecnosc__Zajeci__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Ocena__UczenId__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Ocena__ZajeciaId__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK__Platnosc__UczenI__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK_Zajecia_Sala" ManuallyRouted="false" />
+        <AssociationConnector Association="PollyglotDBModel.FK_Zajecia_Uczen" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PollyglotDBModel.UczenKurs" Width="1.5" PointX="12" PointY="16.625" />
+        <AssociationConnector Association="PollyglotDBModel.FK_UczenKurs_Jezyk" />
+        <AssociationConnector Association="PollyglotDBModel.FK_UczenKurs_Kurs" />
+        <AssociationConnector Association="PollyglotDBModel.FK_UczenKurs_Lektor" />
+        <AssociationConnector Association="PollyglotDBModel.FK_UczenKurs_Podrecznik" />
+        <AssociationConnector Association="PollyglotDBModel.FK_UczenKurs_RodzajKursu" />
+        <AssociationConnector Association="PollyglotDBModel.FK_UczenKurs_Uczen" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

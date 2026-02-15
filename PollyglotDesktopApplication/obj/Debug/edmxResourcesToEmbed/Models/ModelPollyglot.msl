@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PollyglotDBModelStoreContainer" CdmEntityContainer="PollyglotDBEntities">
+    <EntitySetMapping Name="Grupa">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Grupa">
+        <MappingFragment StoreEntitySet="Grupa">
+          <ScalarProperty Name="GrupaId" ColumnName="GrupaId" />
+          <ScalarProperty Name="KursId" ColumnName="KursId" />
+          <ScalarProperty Name="LektorId" ColumnName="LektorId" />
+          <ScalarProperty Name="SalaId" ColumnName="SalaId" />
+          <ScalarProperty Name="PodrecznikId" ColumnName="PodrecznikId" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="DzienTygodnia" ColumnName="DzienTygodnia" />
+          <ScalarProperty Name="GodzinaStart" ColumnName="GodzinaStart" />
+          <ScalarProperty Name="GodzinaKoniec" ColumnName="GodzinaKoniec" />
+          <ScalarProperty Name="Tryb" ColumnName="Tryb" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrupaUczen">
+      <EntityTypeMapping TypeName="PollyglotDBModel.GrupaUczen">
+        <MappingFragment StoreEntitySet="GrupaUczen">
+          <ScalarProperty Name="GrupaId" ColumnName="GrupaId" />
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="DataDolaczenia" ColumnName="DataDolaczenia" />
+          <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jezyk">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Jezyk">
+        <MappingFragment StoreEntitySet="Jezyk">
+          <ScalarProperty Name="JezykId" ColumnName="JezykId" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kurs">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Kurs">
+        <MappingFragment StoreEntitySet="Kurs">
+          <ScalarProperty Name="KursId" ColumnName="KursId" />
+          <ScalarProperty Name="JezykId" ColumnName="JezykId" />
+          <ScalarProperty Name="RodzajKursuId" ColumnName="RodzajKursuId" />
+          <ScalarProperty Name="NazwaKursu" ColumnName="NazwaKursu" />
+          <ScalarProperty Name="Poziom" ColumnName="Poziom" />
+          <ScalarProperty Name="CenaMiesieczna" ColumnName="CenaMiesieczna" />
+          <ScalarProperty Name="Tryb" ColumnName="Tryb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lektor">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Lektor">
+        <MappingFragment StoreEntitySet="Lektor">
+          <ScalarProperty Name="LektorId" ColumnName="LektorId" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="StawkaGodzinowa" ColumnName="StawkaGodzinowa" />
+          <ScalarProperty Name="FormaZatrudnienia" ColumnName="FormaZatrudnienia" />
+          <ScalarProperty Name="DataZatrudnienia" ColumnName="DataZatrudnienia" />
+          <ScalarProperty Name="Aktywny" ColumnName="Aktywny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LektorJezyk">
+      <EntityTypeMapping TypeName="PollyglotDBModel.LektorJezyk">
+        <MappingFragment StoreEntitySet="LektorJezyk">
+          <ScalarProperty Name="LektorJezykId" ColumnName="LektorJezykId" />
+          <ScalarProperty Name="LektorId" ColumnName="LektorId" />
+          <ScalarProperty Name="JezykId" ColumnName="JezykId" />
+          <ScalarProperty Name="PoziomKompetencji" ColumnName="PoziomKompetencji" />
+          <ScalarProperty Name="DoswiadczenieLat" ColumnName="DoswiadczenieLat" />
+          <ScalarProperty Name="Certyfikat" ColumnName="Certyfikat" />
+          <ScalarProperty Name="Specjalizacja" ColumnName="Specjalizacja" />
+          <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Obecnosc">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Obecnosc">
+        <MappingFragment StoreEntitySet="Obecnosc">
+          <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+          <ScalarProperty Name="ObecnoscId" ColumnName="ObecnoscId" />
+          <ScalarProperty Name="ZajeciaId" ColumnName="ZajeciaId" />
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ocena">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Ocena">
+        <MappingFragment StoreEntitySet="Ocena">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TematOceny" ColumnName="TematOceny" />
+          <ScalarProperty Name="OcenaId" ColumnName="OcenaId" />
+          <ScalarProperty Name="ZajeciaId" ColumnName="ZajeciaId" />
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+          <ScalarProperty Name="Wartosc" ColumnName="Wartosc" />
+          <ScalarProperty Name="DataOceny" ColumnName="DataOceny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Platnosc">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Platnosc">
+        <MappingFragment StoreEntitySet="Platnosc">
+          <ScalarProperty Name="PlatnoscId" ColumnName="PlatnoscId" />
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="KursId" ColumnName="KursId" />
+          <ScalarProperty Name="Okres" ColumnName="Okres" />
+          <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+          <ScalarProperty Name="DataPlatnosci" ColumnName="DataPlatnosci" />
+          <ScalarProperty Name="Metoda" ColumnName="Metoda" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Podrecznik">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Podrecznik">
+        <MappingFragment StoreEntitySet="Podrecznik">
+          <ScalarProperty Name="PodrecznikId" ColumnName="PodrecznikId" />
+          <ScalarProperty Name="JezykId" ColumnName="JezykId" />
+          <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="Wydawnictwo" ColumnName="Wydawnictwo" />
+          <ScalarProperty Name="Poziom" ColumnName="Poziom" />
+          <ScalarProperty Name="RokWydania" ColumnName="RokWydania" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RodzajKursu">
+      <EntityTypeMapping TypeName="PollyglotDBModel.RodzajKursu">
+        <MappingFragment StoreEntitySet="RodzajKursu">
+          <ScalarProperty Name="RodzajKursuId" ColumnName="RodzajKursuId" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sala">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Sala">
+        <MappingFragment StoreEntitySet="Sala">
+          <ScalarProperty Name="SalaId" ColumnName="SalaId" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Pojemnosc" ColumnName="Pojemnosc" />
+          <ScalarProperty Name="Lokalizacja" ColumnName="Lokalizacja" />
+          <ScalarProperty Name="Wyposazenie" ColumnName="Wyposazenie" />
+          <ScalarProperty Name="Typ" ColumnName="Typ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PollyglotDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uczen">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Uczen">
+        <MappingFragment StoreEntitySet="Uczen">
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="DataZapisu" ColumnName="DataZapisu" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wynagrodzenie">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Wynagrodzenie">
+        <MappingFragment StoreEntitySet="Wynagrodzenie">
+          <ScalarProperty Name="WynagrodzenieId" ColumnName="WynagrodzenieId" />
+          <ScalarProperty Name="LektorId" ColumnName="LektorId" />
+          <ScalarProperty Name="Okres" ColumnName="Okres" />
+          <ScalarProperty Name="LiczbaGodzin" ColumnName="LiczbaGodzin" />
+          <ScalarProperty Name="StawkaGodzinowa" ColumnName="StawkaGodzinowa" />
+          <ScalarProperty Name="KwotaDoWyplaty" ColumnName="KwotaDoWyplaty" />
+          <ScalarProperty Name="DataWyplaty" ColumnName="DataWyplaty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zajecia">
+      <EntityTypeMapping TypeName="PollyglotDBModel.Zajecia">
+        <MappingFragment StoreEntitySet="Zajecia">
+          <ScalarProperty Name="RodzajZajec" ColumnName="RodzajZajec" />
+          <ScalarProperty Name="ZajeciaId" ColumnName="ZajeciaId" />
+          <ScalarProperty Name="GrupaId" ColumnName="GrupaId" />
+          <ScalarProperty Name="LektorId" ColumnName="LektorId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="GodzinaStart" ColumnName="GodzinaStart" />
+          <ScalarProperty Name="GodzinaKoniec" ColumnName="GodzinaKoniec" />
+          <ScalarProperty Name="Temat" ColumnName="Temat" />
+          <ScalarProperty Name="Uwagi" ColumnName="Uwagi" />
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="Tryb" ColumnName="Tryb" />
+          <ScalarProperty Name="DzienTygodnia" ColumnName="DzienTygodnia" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SalaId" ColumnName="SalaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PollyglotDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PollyglotDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PollyglotDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PollyglotDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PollyglotDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PollyglotDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PollyglotDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PollyglotDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PollyglotDBModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="UczenKurs">
+      <EntityTypeMapping TypeName="PollyglotDBModel.UczenKurs">
+        <MappingFragment StoreEntitySet="UczenKurs">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PodrecznikId" ColumnName="PodrecznikId" />
+          <ScalarProperty Name="LektorId" ColumnName="LektorId" />
+          <ScalarProperty Name="RodzajKursuId" ColumnName="RodzajKursuId" />
+          <ScalarProperty Name="JezykId" ColumnName="JezykId" />
+          <ScalarProperty Name="KursId" ColumnName="KursId" />
+          <ScalarProperty Name="UczenId" ColumnName="UczenId" />
+          <ScalarProperty Name="UczenKursId" ColumnName="UczenKursId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

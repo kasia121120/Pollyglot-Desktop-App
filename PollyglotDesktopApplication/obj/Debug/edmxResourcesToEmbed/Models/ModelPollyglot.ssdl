@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PollyglotDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Grupa">
+    <Key>
+      <PropertyRef Name="GrupaId" />
+    </Key>
+    <Property Name="GrupaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KursId" Type="int" Nullable="false" />
+    <Property Name="LektorId" Type="int" Nullable="false" />
+    <Property Name="SalaId" Type="int" />
+    <Property Name="PodrecznikId" Type="int" />
+    <Property Name="Nazwa" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DzienTygodnia" Type="nvarchar" MaxLength="20" />
+    <Property Name="GodzinaStart" Type="time" Precision="7" />
+    <Property Name="GodzinaKoniec" Type="time" Precision="7" />
+    <Property Name="Tryb" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="GrupaUczen">
+    <Key>
+      <PropertyRef Name="GrupaId" />
+      <PropertyRef Name="UczenId" />
+    </Key>
+    <Property Name="GrupaId" Type="int" Nullable="false" />
+    <Property Name="UczenId" Type="int" Nullable="false" />
+    <Property Name="DataDolaczenia" Type="date" />
+    <Property Name="DataZakonczenia" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Jezyk">
+    <Key>
+      <PropertyRef Name="JezykId" />
+    </Key>
+    <Property Name="JezykId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kod" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Nazwa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Opis" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Kurs">
+    <Key>
+      <PropertyRef Name="KursId" />
+    </Key>
+    <Property Name="KursId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JezykId" Type="int" Nullable="false" />
+    <Property Name="RodzajKursuId" Type="int" Nullable="false" />
+    <Property Name="NazwaKursu" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Poziom" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CenaMiesieczna" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Tryb" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Lektor">
+    <Key>
+      <PropertyRef Name="LektorId" />
+    </Key>
+    <Property Name="LektorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nazwisko" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+    <Property Name="StawkaGodzinowa" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="FormaZatrudnienia" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DataZatrudnienia" Type="date" />
+    <Property Name="Aktywny" Type="bit" />
+  </EntityType>
+  <EntityType Name="LektorJezyk">
+    <Key>
+      <PropertyRef Name="LektorJezykId" />
+    </Key>
+    <Property Name="LektorJezykId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LektorId" Type="int" Nullable="false" />
+    <Property Name="JezykId" Type="int" Nullable="false" />
+    <Property Name="PoziomKompetencji" Type="nvarchar" MaxLength="50" />
+    <Property Name="DoswiadczenieLat" Type="int" />
+    <Property Name="Certyfikat" Type="nvarchar" MaxLength="100" />
+    <Property Name="Specjalizacja" Type="nvarchar" MaxLength="100" />
+    <Property Name="Uwagi" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Obecnosc">
+    <Key>
+      <PropertyRef Name="ObecnoscId" />
+    </Key>
+    <Property Name="ObecnoscId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ZajeciaId" Type="int" Nullable="false" />
+    <Property Name="UczenId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="Uwagi" Type="nvarchar" MaxLength="200" />
+    <Property Name="RecordStatus" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ocena">
+    <Key>
+      <PropertyRef Name="OcenaId" />
+    </Key>
+    <Property Name="OcenaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ZajeciaId" Type="int" Nullable="false" />
+    <Property Name="UczenId" Type="int" Nullable="false" />
+    <Property Name="Rodzaj" Type="nvarchar" MaxLength="50" />
+    <Property Name="Wartosc" Type="nvarchar" MaxLength="10" />
+    <Property Name="TematOceny" Type="nvarchar" MaxLength="200" />
+    <Property Name="DataOceny" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Platnosc">
+    <Key>
+      <PropertyRef Name="PlatnoscId" />
+    </Key>
+    <Property Name="PlatnoscId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UczenId" Type="int" Nullable="false" />
+    <Property Name="KursId" Type="int" Nullable="false" />
+    <Property Name="Okres" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="Kwota" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DataPlatnosci" Type="date" />
+    <Property Name="Metoda" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="Uwagi" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Podrecznik">
+    <Key>
+      <PropertyRef Name="PodrecznikId" />
+    </Key>
+    <Property Name="PodrecznikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JezykId" Type="int" Nullable="false" />
+    <Property Name="Tytul" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Autor" Type="nvarchar" MaxLength="150" />
+    <Property Name="Wydawnictwo" Type="nvarchar" MaxLength="150" />
+    <Property Name="Poziom" Type="nvarchar" MaxLength="10" />
+    <Property Name="RokWydania" Type="int" />
+    <Property Name="Opis" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="RodzajKursu">
+    <Key>
+      <PropertyRef Name="RodzajKursuId" />
+    </Key>
+    <Property Name="RodzajKursuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Opis" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Sala">
+    <Key>
+      <PropertyRef Name="SalaId" />
+    </Key>
+    <Property Name="SalaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nazwa" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pojemnosc" Type="int" />
+    <Property Name="Lokalizacja" Type="nvarchar" MaxLength="200" />
+    <Property Name="Wyposazenie" Type="nvarchar" MaxLength="300" />
+    <Property Name="Typ" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Uczen">
+    <Key>
+      <PropertyRef Name="UczenId" />
+    </Key>
+    <Property Name="UczenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nazwisko" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PESEL" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+    <Property Name="DataZapisu" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="UczenKurs">
+    <Key>
+      <PropertyRef Name="UczenKursId" />
+    </Key>
+    <Property Name="UczenKursId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UczenId" Type="int" Nullable="false" />
+    <Property Name="KursId" Type="int" Nullable="false" />
+    <Property Name="JezykId" Type="int" Nullable="false" />
+    <Property Name="RodzajKursuId" Type="int" Nullable="false" />
+    <Property Name="LektorId" Type="int" Nullable="false" />
+    <Property Name="PodrecznikId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wynagrodzenie">
+    <Key>
+      <PropertyRef Name="WynagrodzenieId" />
+    </Key>
+    <Property Name="WynagrodzenieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LektorId" Type="int" Nullable="false" />
+    <Property Name="Okres" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="LiczbaGodzin" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="StawkaGodzinowa" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="KwotaDoWyplaty" Type="decimal" Precision="17" Scale="4" StoreGeneratedPattern="Computed" />
+    <Property Name="DataWyplaty" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Zajecia">
+    <Key>
+      <PropertyRef Name="ZajeciaId" />
+    </Key>
+    <Property Name="ZajeciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GrupaId" Type="int" />
+    <Property Name="LektorId" Type="int" />
+    <Property Name="Data" Type="date" />
+    <Property Name="GodzinaStart" Type="time" Precision="7" />
+    <Property Name="GodzinaKoniec" Type="time" Precision="7" />
+    <Property Name="Temat" Type="nvarchar" MaxLength="200" />
+    <Property Name="Uwagi" Type="nvarchar" MaxLength="300" />
+    <Property Name="UczenId" Type="int" />
+    <Property Name="Tryb" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DzienTygodnia" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="30" />
+    <Property Name="SalaId" Type="int" />
+    <Property Name="RodzajZajec" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Grupa__KursId__534D60F1">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="KursId" />
+      </Principal>
+      <Dependent Role="Grupa">
+        <PropertyRef Name="KursId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Grupa__LektorId__5441852A">
+    <End Role="Lektor" Type="Self.Lektor" Multiplicity="1" />
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektor">
+        <PropertyRef Name="LektorId" />
+      </Principal>
+      <Dependent Role="Grupa">
+        <PropertyRef Name="LektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Grupa__Podreczni__5629CD9C">
+    <End Role="Podrecznik" Type="Self.Podrecznik" Multiplicity="0..1" />
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Podrecznik">
+        <PropertyRef Name="PodrecznikId" />
+      </Principal>
+      <Dependent Role="Grupa">
+        <PropertyRef Name="PodrecznikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Grupa__SalaId__5535A963">
+    <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="SalaId" />
+      </Principal>
+      <Dependent Role="Grupa">
+        <PropertyRef Name="SalaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GrupaUcze__Grupa__59FA5E80">
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="1" />
+    <End Role="GrupaUczen" Type="Self.GrupaUczen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupa">
+        <PropertyRef Name="GrupaId" />
+      </Principal>
+      <Dependent Role="GrupaUczen">
+        <PropertyRef Name="GrupaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GrupaUcze__Uczen__5AEE82B9">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="GrupaUczen" Type="Self.GrupaUczen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="UczenId" />
+      </Principal>
+      <Dependent Role="GrupaUczen">
+        <PropertyRef Name="UczenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Kurs__JezykId__45F365D3">
+    <End Role="Jezyk" Type="Self.Jezyk" Multiplicity="1" />
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jezyk">
+        <PropertyRef Name="JezykId" />
+      </Principal>
+      <Dependent Role="Kurs">
+        <PropertyRef Name="JezykId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Kurs__RodzajKurs__46E78A0C">
+    <End Role="RodzajKursu" Type="Self.RodzajKursu" Multiplicity="1" />
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RodzajKursu">
+        <PropertyRef Name="RodzajKursuId" />
+      </Principal>
+      <Dependent Role="Kurs">
+        <PropertyRef Name="RodzajKursuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LektorJez__Jezyk__18EBB532">
+    <End Role="Jezyk" Type="Self.Jezyk" Multiplicity="1" />
+    <End Role="LektorJezyk" Type="Self.LektorJezyk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jezyk">
+        <PropertyRef Name="JezykId" />
+      </Principal>
+      <Dependent Role="LektorJezyk">
+        <PropertyRef Name="JezykId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LektorJez__Lekto__17F790F9">
+    <End Role="Lektor" Type="Self.Lektor" Multiplicity="1" />
+    <End Role="LektorJezyk" Type="Self.LektorJezyk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektor">
+        <PropertyRef Name="LektorId" />
+      </Principal>
+      <Dependent Role="LektorJezyk">
+        <PropertyRef Name="LektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Obecnosc__UczenI__6383C8BA">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="Obecnosc" Type="Self.Obecnosc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="UczenId" />
+      </Principal>
+      <Dependent Role="Obecnosc">
+        <PropertyRef Name="UczenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Obecnosc__Zajeci__628FA481">
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="1" />
+    <End Role="Obecnosc" Type="Self.Obecnosc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zajecia">
+        <PropertyRef Name="ZajeciaId" />
+      </Principal>
+      <Dependent Role="Obecnosc">
+        <PropertyRef Name="ZajeciaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ocena__UczenId__68487DD7">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="Ocena" Type="Self.Ocena" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="UczenId" />
+      </Principal>
+      <Dependent Role="Ocena">
+        <PropertyRef Name="UczenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ocena__ZajeciaId__6754599E">
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="1" />
+    <End Role="Ocena" Type="Self.Ocena" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zajecia">
+        <PropertyRef Name="ZajeciaId" />
+      </Principal>
+      <Dependent Role="Ocena">
+        <PropertyRef Name="ZajeciaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Platnosc__KursId__6D0D32F4">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="Platnosc" Type="Self.Platnosc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="KursId" />
+      </Principal>
+      <Dependent Role="Platnosc">
+        <PropertyRef Name="KursId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Platnosc__UczenI__6C190EBB">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="Platnosc" Type="Self.Platnosc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="UczenId" />
+      </Principal>
+      <Dependent Role="Platnosc">
+        <PropertyRef Name="UczenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Podreczni__Jezyk__4E88ABD4">
+    <End Role="Jezyk" Type="Self.Jezyk" Multiplicity="1" />
+    <End Role="Podrecznik" Type="Self.Podrecznik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jezyk">
+        <PropertyRef Name="JezykId" />
+      </Principal>
+      <Dependent Role="Podrecznik">
+        <PropertyRef Name="JezykId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Wynagrodz__Lekto__6FE99F9F">
+    <End Role="Lektor" Type="Self.Lektor" Multiplicity="1" />
+    <End Role="Wynagrodzenie" Type="Self.Wynagrodzenie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektor">
+        <PropertyRef Name="LektorId" />
+      </Principal>
+      <Dependent Role="Wynagrodzenie">
+        <PropertyRef Name="LektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Zajecia__GrupaId__5DCAEF64">
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupa">
+        <PropertyRef Name="GrupaId" />
+      </Principal>
+      <Dependent Role="Zajecia">
+        <PropertyRef Name="GrupaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Zajecia__LektorI__5EBF139D">
+    <End Role="Lektor" Type="Self.Lektor" Multiplicity="0..1" />
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektor">
+        <PropertyRef Name="LektorId" />
+      </Principal>
+      <Dependent Role="Zajecia">
+        <PropertyRef Name="LektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UczenKurs_Jezyk">
+    <End Role="Jezyk" Type="Self.Jezyk" Multiplicity="1" />
+    <End Role="UczenKurs" Type="Self.UczenKurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jezyk">
+        <PropertyRef Name="JezykId" />
+      </Principal>
+      <Dependent Role="UczenKurs">
+        <PropertyRef Name="JezykId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UczenKurs_Kurs">
+    <End Role="Kurs" Type="Self.Kurs" Multiplicity="1" />
+    <End Role="UczenKurs" Type="Self.UczenKurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kurs">
+        <PropertyRef Name="KursId" />
+      </Principal>
+      <Dependent Role="UczenKurs">
+        <PropertyRef Name="KursId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UczenKurs_Lektor">
+    <End Role="Lektor" Type="Self.Lektor" Multiplicity="1" />
+    <End Role="UczenKurs" Type="Self.UczenKurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lektor">
+        <PropertyRef Name="LektorId" />
+      </Principal>
+      <Dependent Role="UczenKurs">
+        <PropertyRef Name="LektorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UczenKurs_Podrecznik">
+    <End Role="Podrecznik" Type="Self.Podrecznik" Multiplicity="1" />
+    <End Role="UczenKurs" Type="Self.UczenKurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Podrecznik">
+        <PropertyRef Name="PodrecznikId" />
+      </Principal>
+      <Dependent Role="UczenKurs">
+        <PropertyRef Name="PodrecznikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UczenKurs_RodzajKursu">
+    <End Role="RodzajKursu" Type="Self.RodzajKursu" Multiplicity="1" />
+    <End Role="UczenKurs" Type="Self.UczenKurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RodzajKursu">
+        <PropertyRef Name="RodzajKursuId" />
+      </Principal>
+      <Dependent Role="UczenKurs">
+        <PropertyRef Name="RodzajKursuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UczenKurs_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="UczenKurs" Type="Self.UczenKurs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="UczenId" />
+      </Principal>
+      <Dependent Role="UczenKurs">
+        <PropertyRef Name="UczenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zajecia_Grupa">
+    <End Role="Grupa" Type="Self.Grupa" Multiplicity="0..1" />
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupa">
+        <PropertyRef Name="GrupaId" />
+      </Principal>
+      <Dependent Role="Zajecia">
+        <PropertyRef Name="GrupaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zajecia_Sala">
+    <End Role="Sala" Type="Self.Sala" Multiplicity="0..1" />
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="SalaId" />
+      </Principal>
+      <Dependent Role="Zajecia">
+        <PropertyRef Name="SalaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zajecia_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="0..1" />
+    <End Role="Zajecia" Type="Self.Zajecia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="UczenId" />
+      </Principal>
+      <Dependent Role="Zajecia">
+        <PropertyRef Name="UczenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="PollyglotDBModelStoreContainer">
+    <EntitySet Name="Grupa" EntityType="Self.Grupa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GrupaUczen" EntityType="Self.GrupaUczen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jezyk" EntityType="Self.Jezyk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lektor" EntityType="Self.Lektor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LektorJezyk" EntityType="Self.LektorJezyk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Obecnosc" EntityType="Self.Obecnosc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ocena" EntityType="Self.Ocena" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Platnosc" EntityType="Self.Platnosc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Podrecznik" EntityType="Self.Podrecznik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RodzajKursu" EntityType="Self.RodzajKursu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sala" EntityType="Self.Sala" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uczen" EntityType="Self.Uczen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UczenKurs" EntityType="Self.UczenKurs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wynagrodzenie" EntityType="Self.Wynagrodzenie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zajecia" EntityType="Self.Zajecia" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Grupa__KursId__534D60F1" Association="Self.FK__Grupa__KursId__534D60F1">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Grupa" EntitySet="Grupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Grupa__LektorId__5441852A" Association="Self.FK__Grupa__LektorId__5441852A">
+      <End Role="Lektor" EntitySet="Lektor" />
+      <End Role="Grupa" EntitySet="Grupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Grupa__Podreczni__5629CD9C" Association="Self.FK__Grupa__Podreczni__5629CD9C">
+      <End Role="Podrecznik" EntitySet="Podrecznik" />
+      <End Role="Grupa" EntitySet="Grupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Grupa__SalaId__5535A963" Association="Self.FK__Grupa__SalaId__5535A963">
+      <End Role="Sala" EntitySet="Sala" />
+      <End Role="Grupa" EntitySet="Grupa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GrupaUcze__Grupa__59FA5E80" Association="Self.FK__GrupaUcze__Grupa__59FA5E80">
+      <End Role="Grupa" EntitySet="Grupa" />
+      <End Role="GrupaUczen" EntitySet="GrupaUczen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GrupaUcze__Uczen__5AEE82B9" Association="Self.FK__GrupaUcze__Uczen__5AEE82B9">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="GrupaUczen" EntitySet="GrupaUczen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Kurs__JezykId__45F365D3" Association="Self.FK__Kurs__JezykId__45F365D3">
+      <End Role="Jezyk" EntitySet="Jezyk" />
+      <End Role="Kurs" EntitySet="Kurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Kurs__RodzajKurs__46E78A0C" Association="Self.FK__Kurs__RodzajKurs__46E78A0C">
+      <End Role="RodzajKursu" EntitySet="RodzajKursu" />
+      <End Role="Kurs" EntitySet="Kurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LektorJez__Jezyk__18EBB532" Association="Self.FK__LektorJez__Jezyk__18EBB532">
+      <End Role="Jezyk" EntitySet="Jezyk" />
+      <End Role="LektorJezyk" EntitySet="LektorJezyk" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LektorJez__Lekto__17F790F9" Association="Self.FK__LektorJez__Lekto__17F790F9">
+      <End Role="Lektor" EntitySet="Lektor" />
+      <End Role="LektorJezyk" EntitySet="LektorJezyk" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Obecnosc__UczenI__6383C8BA" Association="Self.FK__Obecnosc__UczenI__6383C8BA">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Obecnosc" EntitySet="Obecnosc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Obecnosc__Zajeci__628FA481" Association="Self.FK__Obecnosc__Zajeci__628FA481">
+      <End Role="Zajecia" EntitySet="Zajecia" />
+      <End Role="Obecnosc" EntitySet="Obecnosc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ocena__UczenId__68487DD7" Association="Self.FK__Ocena__UczenId__68487DD7">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Ocena" EntitySet="Ocena" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ocena__ZajeciaId__6754599E" Association="Self.FK__Ocena__ZajeciaId__6754599E">
+      <End Role="Zajecia" EntitySet="Zajecia" />
+      <End Role="Ocena" EntitySet="Ocena" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Platnosc__KursId__6D0D32F4" Association="Self.FK__Platnosc__KursId__6D0D32F4">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="Platnosc" EntitySet="Platnosc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Platnosc__UczenI__6C190EBB" Association="Self.FK__Platnosc__UczenI__6C190EBB">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Platnosc" EntitySet="Platnosc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Podreczni__Jezyk__4E88ABD4" Association="Self.FK__Podreczni__Jezyk__4E88ABD4">
+      <End Role="Jezyk" EntitySet="Jezyk" />
+      <End Role="Podrecznik" EntitySet="Podrecznik" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Wynagrodz__Lekto__6FE99F9F" Association="Self.FK__Wynagrodz__Lekto__6FE99F9F">
+      <End Role="Lektor" EntitySet="Lektor" />
+      <End Role="Wynagrodzenie" EntitySet="Wynagrodzenie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zajecia__GrupaId__5DCAEF64" Association="Self.FK__Zajecia__GrupaId__5DCAEF64">
+      <End Role="Grupa" EntitySet="Grupa" />
+      <End Role="Zajecia" EntitySet="Zajecia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Zajecia__LektorI__5EBF139D" Association="Self.FK__Zajecia__LektorI__5EBF139D">
+      <End Role="Lektor" EntitySet="Lektor" />
+      <End Role="Zajecia" EntitySet="Zajecia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UczenKurs_Jezyk" Association="Self.FK_UczenKurs_Jezyk">
+      <End Role="Jezyk" EntitySet="Jezyk" />
+      <End Role="UczenKurs" EntitySet="UczenKurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UczenKurs_Kurs" Association="Self.FK_UczenKurs_Kurs">
+      <End Role="Kurs" EntitySet="Kurs" />
+      <End Role="UczenKurs" EntitySet="UczenKurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UczenKurs_Lektor" Association="Self.FK_UczenKurs_Lektor">
+      <End Role="Lektor" EntitySet="Lektor" />
+      <End Role="UczenKurs" EntitySet="UczenKurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UczenKurs_Podrecznik" Association="Self.FK_UczenKurs_Podrecznik">
+      <End Role="Podrecznik" EntitySet="Podrecznik" />
+      <End Role="UczenKurs" EntitySet="UczenKurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UczenKurs_RodzajKursu" Association="Self.FK_UczenKurs_RodzajKursu">
+      <End Role="RodzajKursu" EntitySet="RodzajKursu" />
+      <End Role="UczenKurs" EntitySet="UczenKurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UczenKurs_Uczen" Association="Self.FK_UczenKurs_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="UczenKurs" EntitySet="UczenKurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zajecia_Grupa" Association="Self.FK_Zajecia_Grupa">
+      <End Role="Grupa" EntitySet="Grupa" />
+      <End Role="Zajecia" EntitySet="Zajecia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zajecia_Sala" Association="Self.FK_Zajecia_Sala">
+      <End Role="Sala" EntitySet="Sala" />
+      <End Role="Zajecia" EntitySet="Zajecia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zajecia_Uczen" Association="Self.FK_Zajecia_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Zajecia" EntitySet="Zajecia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

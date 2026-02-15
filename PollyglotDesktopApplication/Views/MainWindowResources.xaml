@@ -1,0 +1,140 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:PollyglotDesktopApp.ViewModels"
+                    xmlns:vmAll="clr-namespace:PollyglotDesktopApp.ViewModels.AllTables"
+                    xmlns:vmAdd="clr-namespace:PollyglotDesktopApp.ViewModels.Add"
+                    xmlns:vmRaport="clr-namespace:PollyglotDesktopApp.ViewModels.Raporty"
+                    xmlns:views="clr-namespace:PollyglotDesktopApp.Views.AllTables"
+                    xmlns:viewsAdd="clr-namespace:PollyglotDesktopApp.Views.Add"
+                    xmlns:viewsRaport="clr-namespace:PollyglotDesktopApp.Views.Raporty">
+
+    <DataTemplate x:Key="WorkspacesTemplate">
+        <ContentPresenter Content="{Binding}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding DisplayName}"
+                            Command="{Binding Command}"
+                            Margin="2"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszyscyUczniowieViewModel}">
+        <views:WszyscyUczniowieView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieJezykiViewModel}">
+        <views:WszystkieJezykiView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszyscyLektorzyViewModel}">
+        <views:WszyscyLektorzyView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieSaleViewModel}">
+        <views:WszystkieSaleView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieRodzajeKursuViewModel}">
+        <views:WszystkieRodzajeKursuView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieGrupyViewModel}">
+        <views:WszystkieGrupyView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieKursyViewModel}">
+        <views:WszystkieKursyView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieGrupaUczenViewModel}">
+        <views:WszystkieGrupaUczenView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieLektorJezykViewModel}">
+        <views:WszystkieLektorJezykView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieObecnosciViewModel}">
+        <views:WszystkieObecnosciView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkiePlatnosciViewModel}">
+        <views:WszystkiePlatnosciView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkiePodrecznikiViewModel}">
+        <views:WszystkiePodrecznikiView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieUczenKursViewModel}">
+        <views:WszystkieUczenKursView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieWynagrodzeniaViewModel}">
+        <views:WszystkieWynagrodzeniaView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieZajeciaViewModel}">
+        <views:WszystkieZajeciaView />
+    </DataTemplate>
+
+
+    <DataTemplate DataType="{x:Type vmAll:WszystkieOcenyViewModel}">
+        <views:WszystkieOcenyView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmRaport:RaportPlatnosciViewModel}">
+        <viewsRaport:RaportPlatnosciView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmRaport:RaportFrekwencjiViewModel}">
+        <viewsRaport:RaportFrekwencjiView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmRaport:RaportWynagrodzenViewModel}">
+        <viewsRaport:RaportWynagrodzenView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAdd:NewUczenViewModel}">
+        <viewsAdd:NewUczenView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmAdd:NewLektorViewModel}">
+        <viewsAdd:NewLektorView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmAdd:NewSalaViewModel}">
+        <viewsAdd:NewSalaView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmAdd:NewRodzajKursuViewModel}">
+        <viewsAdd:NewRodzajKursuView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmAdd:NewJezykViewModel}">
+        <viewsAdd:NewJezykView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmAdd:NewUczenKursViewModel}">
+        <viewsAdd:NewUczenKursView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmAdd:NewLektorJezykViewModel}">
+        <viewsAdd:NewLektorJezykView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAdd:NewGrupaUczenViewModel}">
+        <viewsAdd:NewGrupaUczenView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vmAdd:NewZajeciaViewModel}">
+        <viewsAdd:NewZajeciaView />
+    </DataTemplate>
+    
+
+
+
+
+
+
+</ResourceDictionary>

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{48C29C18-3895-428A-8EB9-2318E818DD3C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PollyglotDesktopApp</RootNamespace>
+    <AssemblyName>PollyglotDesktopApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Helper\CsvExportHelper.cs" />
+    <Compile Include="Helper\CsvValueHelper.cs" />
+    <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
+    <Compile Include="Models\BusinessLogic\FrekwencjaRaportB.cs" />
+    <Compile Include="Models\BusinessLogic\LektorB.cs" />
+    <Compile Include="Models\BusinessLogic\PlatnoscB.cs" />
+    <Compile Include="Models\BusinessLogic\WynagrodzenieRaportB.cs" />
+    <Compile Include="Models\BusinessLogic\ZaleglosciB.cs" />
+    <Compile Include="Models\ForAllView\FrekwencjaRaportRow.cs" />
+    <Compile Include="Models\ForAllView\GrupaForAllView.cs" />
+    <Compile Include="Models\ForAllView\GrupaUczenForAllView.cs" />
+    <Compile Include="Models\ForAllView\KeyAndValue.cs" />
+    <Compile Include="Models\ForAllView\KursForAllView.cs" />
+    <Compile Include="Models\ForAllView\LektorJezykForAllView.cs" />
+    <Compile Include="Models\ForAllView\ObecnoscForAllView.cs" />
+    <Compile Include="Models\ForAllView\OcenaForAllView.cs" />
+    <Compile Include="Models\ForAllView\PlatnoscForAllView.cs" />
+    <Compile Include="Models\ForAllView\PlatnoscRaportRow.cs" />
+    <Compile Include="Models\ForAllView\PodrecznikForAllView.cs" />
+    <Compile Include="Models\ForAllView\UczenKursForAllView.cs" />
+    <Compile Include="Models\ForAllView\WynagrodzenieForAllView.cs" />
+    <Compile Include="Models\ForAllView\WynagrodzenieRaportRow.cs" />
+    <Compile Include="Models\ForAllView\ZajeciaForAllView.cs" />
+    <Compile Include="Models\Grupa.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GrupaUczen.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Jezyk.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kurs.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lektor.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LektorJezyk.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelPollyglot.Context.cs">
+      <DependentUpon>ModelPollyglot.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\ModelPollyglot.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\ModelPollyglot.Designer.cs">
+      <DependentUpon>ModelPollyglot.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\Obecnosc.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ocena.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Platnosc.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Podrecznik.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RodzajKursu.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sala.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Uczen.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UczenKurs.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Validatory\DateValidator.cs" />
+    <Compile Include="Models\Validatory\StringValidator.cs" />
+    <Compile Include="Models\Validatory\Validator.cs" />
+    <Compile Include="Models\Validatory\ZajeciaValidator.cs" />
+    <Compile Include="Models\Wynagrodzenie.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zajecia.cs">
+      <DependentUpon>ModelPollyglot.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Abstract\JedenViewModel.cs" />
+    <Compile Include="ViewModels\Abstract\WszystkieViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewGrupaUczenViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewJezykViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewLektorJezykViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewLektorViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewRodzajKursuViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewSalaViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewUczenKursViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewUczenViewModel.cs" />
+    <Compile Include="ViewModels\Add\NewZajeciaViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszyscyLektorzyViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszyscyUczniowieViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieGrupaUczenViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieGrupyViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieJezykiViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieKursyViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieLektorJezykViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieObecnosciViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieOcenyViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkiePlatnosciViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkiePodrecznikiViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieRodzajeKursuViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieSaleViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieUczenKursViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieWynagrodzeniaViewModel.cs" />
+    <Compile Include="ViewModels\AllTables\WszystkieZajeciaViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Raporty\RaportFrekwencjiViewModel.cs" />
+    <Compile Include="ViewModels\Raporty\RaportPlatnosciViewModel.cs" />
+    <Compile Include="ViewModels\Raporty\RaportWynagrodzenViewModel.cs" />
+    <Compile Include="ViewModels\WorkspaceViewModel.cs" />
+    <Compile Include="Views\Add\NewGrupaUczenView.xaml.cs">
+      <DependentUpon>NewGrupaUczenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewJezykView.xaml.cs">
+      <DependentUpon>NewJezykView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewLektorJezykView.xaml.cs">
+      <DependentUpon>NewLektorJezykView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewLektorView.xaml.cs">
+      <DependentUpon>NewLektorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewRodzajKursuView.xaml.cs">
+      <DependentUpon>NewRodzajKursuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewSalaView.xaml.cs">
+      <DependentUpon>NewSalaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewUczenKursView.xaml.cs">
+      <DependentUpon>NewUczenKursView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewUczenView.xaml.cs">
+      <DependentUpon>NewUczenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Add\NewZajeciaView.xaml.cs">
+      <DependentUpon>NewZajeciaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszyscyLektorzyView.xaml.cs">
+      <DependentUpon>WszyscyLektorzyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszyscyUczniowieView.xaml.cs">
+      <DependentUpon>WszyscyUczniowieView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieGrupaUczenView.xaml.cs">
+      <DependentUpon>WszystkieGrupaUczenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieGrupyView.xaml.cs">
+      <DependentUpon>WszystkieGrupyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieJezykiView.xaml.cs">
+      <DependentUpon>WszystkieJezykiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieKursyView.xaml.cs">
+      <DependentUpon>WszystkieKursyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieLektorJezykView.xaml.cs">
+      <DependentUpon>WszystkieLektorJezykView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieObecnosciView.xaml.cs">
+      <DependentUpon>WszystkieObecnosciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieOcenyView.xaml.cs">
+      <DependentUpon>WszystkieOcenyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkiePlatnosciView.xaml.cs">
+      <DependentUpon>WszystkiePlatnosciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkiePodrecznikiView.xaml.cs">
+      <DependentUpon>WszystkiePodrecznikiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieRodzajeKursuView.xaml.cs">
+      <DependentUpon>WszystkieRodzajeKursuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieSaleView.xaml.cs">
+      <DependentUpon>WszystkieSaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieUczenKursView.xaml.cs">
+      <DependentUpon>WszystkieUczenKursView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieWynagrodzeniaView.xaml.cs">
+      <DependentUpon>WszystkieWynagrodzeniaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AllTables\WszystkieZajeciaView.xaml.cs">
+      <DependentUpon>WszystkieZajeciaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JedenViewBase.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Raporty\RaportFrekwencjiView.xaml.cs">
+      <DependentUpon>RaportFrekwencjiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Raporty\RaportPlatnosciView.xaml.cs">
+      <DependentUpon>RaportPlatnosciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Raporty\RaportWynagrodzenView.xaml.cs">
+      <DependentUpon>RaportWynagrodzenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieViewBase.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helper\BaseCommand.cs" />
+    <Page Include="Themes\BrandTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Add\NewGrupaUczenView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Add\NewJezykView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Add\NewLektorJezykView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Add\NewLektorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Add\NewRodzajKursuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Add\NewSalaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Add\NewUczenKursView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Add\NewUczenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Add\NewZajeciaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszyscyLektorzyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszyscyUczniowieView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieGrupaUczenView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieGrupyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieJezykiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieKursyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieLektorJezykView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieObecnosciView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieOcenyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszystkiePlatnosciView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkiePodrecznikiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieRodzajeKursuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieSaleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieUczenKursView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieWynagrodzeniaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTables\WszystkieZajeciaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainWindowResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Raporty\RaportFrekwencjiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Raporty\RaportPlatnosciView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Raporty\RaportWynagrodzenView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Models\ModelPollyglot.edmx.diagram">
+      <DependentUpon>ModelPollyglot.edmx</DependentUpon>
+    </None>
+    <None Include="packages\CommonServiceLocator.2.0.2\.signature.p7s" />
+    <None Include="packages\CommonServiceLocator.2.0.2\CommonServiceLocator.2.0.2.nupkg" />
+    <None Include="packages\EntityFramework.5.0.0\Content\App.config.transform" />
+    <None Include="packages\EntityFramework.5.0.0\Content\Web.config.transform" />
+    <None Include="packages\EntityFramework.5.0.0\EntityFramework.5.0.0.nupkg" />
+    <None Include="packages\EntityFramework.5.0.0\tools\EntityFramework.PS3.psd1" />
+    <None Include="packages\EntityFramework.5.0.0\tools\EntityFramework.psd1" />
+    <None Include="packages\EntityFramework.5.0.0\tools\EntityFramework.psm1" />
+    <None Include="packages\EntityFramework.5.0.0\tools\init.ps1" />
+    <None Include="packages\EntityFramework.5.0.0\tools\install.ps1" />
+    <None Include="packages\EntityFramework.5.0.0\tools\Redirect.config" />
+    <None Include="packages\EntityFramework.5.0.0\tools\Redirect.VS11.config" />
+    <None Include="packages\MvvmLight.5.4.1.1\.signature.p7s" />
+    <None Include="packages\MvvmLight.5.4.1.1\Content\ViewModel\MainViewModel.cs.pp" />
+    <None Include="packages\MvvmLight.5.4.1.1\Content\ViewModel\ViewModelLocator.cs.pp" />
+    <None Include="packages\MvvmLight.5.4.1.1\MvvmLight.5.4.1.1.nupkg" />
+    <None Include="packages\MvvmLight.5.4.1.1\tools\install.ps1" />
+    <None Include="packages\MvvmLightLibs.5.4.1.1\.signature.p7s" />
+    <None Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Platform.pri" />
+    <None Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Platform.pri" />
+    <None Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Platform.pri" />
+    <None Include="packages\MvvmLightLibs.5.4.1.1\MvvmLightLibs.5.4.1.1.nupkg" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\ModelPollyglot.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelPollyglot.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ModelPollyglot.Context.tt">
+      <DependentUpon>ModelPollyglot.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelPollyglot.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelPollyglot.tt">
+      <DependentUpon>ModelPollyglot.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelPollyglot.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages\CommonServiceLocator.2.0.2\lib\net40\CommonServiceLocator.dll" />
+    <Content Include="packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll" />
+    <Content Include="packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll" />
+    <Content Include="packages\CommonServiceLocator.2.0.2\lib\netcoreapp1.0\CommonServiceLocator.dll" />
+    <Content Include="packages\CommonServiceLocator.2.0.2\lib\netstandard1.0\CommonServiceLocator.dll" />
+    <Content Include="packages\CommonServiceLocator.2.0.2\lib\netstandard2.0\CommonServiceLocator.dll" />
+    <Content Include="packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll" />
+    <Resource Include="packages\EntityFramework.5.0.0\lib\net40\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll" />
+    <Resource Include="packages\EntityFramework.5.0.0\lib\net45\EntityFramework.xml" />
+    <Resource Include="packages\EntityFramework.5.0.0\tools\about_EntityFramework.help.txt" />
+    <Content Include="packages\EntityFramework.5.0.0\tools\EntityFramework.PowerShell.dll" />
+    <Content Include="packages\EntityFramework.5.0.0\tools\EntityFramework.PowerShell.Utility.dll" />
+    <Content Include="packages\EntityFramework.5.0.0\tools\migrate.exe" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Extras.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.Platform.XML" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\monoandroid1\GalaSoft.MvvmLight.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\GalaSoft.MvvmLight.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\System.Windows.Interactivity.dll" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net35\System.Windows.Interactivity.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\System.Windows.Interactivity.dll" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net40\System.Windows.Interactivity.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.xml" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.Extras.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\GalaSoft.MvvmLight.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\SL5\System.Windows.Interactivity.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.Platform.xml" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\uap10.0\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.Platform.xml" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\windows81\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.Platform.xml" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp81\System.Windows.Interactivity.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.Extras.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.Platform.xml" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\GalaSoft.MvvmLight.xml" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wp8\System.Windows.Interactivity.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Extras.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Platform.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Platform.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.Platform.XML" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\wpa81\GalaSoft.MvvmLight.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Extras.dll" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Extras.pdb" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Extras.XML" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.pdb" />
+    <Content Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Platform.dll" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.Platform.XML" />
+    <Resource Include="packages\MvvmLightLibs.5.4.1.1\lib\xamarin.ios10\GalaSoft.MvvmLight.XML" />
+    <Resource Include="Assets\Images\logo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

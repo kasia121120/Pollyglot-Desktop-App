@@ -1,0 +1,21 @@
+<views:WszystkieViewBase x:Class="PollyglotDesktopApp.Views.AllTables.WszystkieKursyView"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:views="clr-namespace:PollyglotDesktopApp.Views">
+
+    <DataGrid AutoGenerateColumns="False"
+              IsReadOnly="True"
+              ItemsSource="{Binding List}"
+              SelectedItem="{Binding WybranyKurs, Mode=TwoWay}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding KursId}" />
+            <DataGridTextColumn Header="Nazwa kursu" Binding="{Binding NazwaKursu}" />
+            <DataGridTextColumn Header="Język" Binding="{Binding Jezyk}" />
+            <DataGridTextColumn Header="Rodzaj kursu" Binding="{Binding RodzajKursu}" />
+            <DataGridTextColumn Header="Poziom" Binding="{Binding Poziom}" />
+            <DataGridTextColumn Header="Cena" Binding="{Binding CenaMiesieczna}" />
+            <DataGridTextColumn Header="Tryb" Binding="{Binding Tryb}" />
+        </DataGrid.Columns>
+    </DataGrid>
+
+</views:WszystkieViewBase>

@@ -1,0 +1,112 @@
+<views:WszystkieViewBase x:Class="PollyglotDesktopApp.Views.AllTables.WszystkieZajeciaView"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:views="clr-namespace:PollyglotDesktopApp.Views">
+
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="White"
+                BorderBrush="Gray"
+                BorderThickness="1"
+                Padding="12"
+                Margin="0,0,0,10">
+
+            <GroupBox Header="Szczegóły zajęć">
+                <StackPanel>
+
+                    <GroupBox Header="Informacje podstawowe" Margin="0,0,0,6">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SelectedItem.Data, StringFormat=Data: {0:dd.MM.yyyy}, TargetNullValue=Data: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.GodzinaStart, StringFormat=Start: {0:hh\\:mm}, TargetNullValue=Start: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.GodzinaKoniec, StringFormat=Koniec: {0:hh\\:mm}, TargetNullValue=Koniec: ?}"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Osoby i grupa" Margin="0,0,0,6">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SelectedItem.Lektor, StringFormat=Lektor: {0}, TargetNullValue=Lektor: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.Grupa, StringFormat=Grupa: {0}, TargetNullValue=Grupa: ?}"/>
+
+                            <TextBlock Text="Uczniowie:" FontWeight="SemiBold" Margin="0,6,0,2"/>
+                            <ItemsControl ItemsSource="{Binding SelectedGroupMembers}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Organizacja" Margin="0,0,0,6">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SelectedItem.Sala, StringFormat=Sala: {0}, TargetNullValue=Sala: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.Tryb, StringFormat=Tryb: {0}, TargetNullValue=Tryb: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.DzienTygodnia, StringFormat=Dzień tyg.: {0}, TargetNullValue=Dzień tyg.: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.RodzajZajec, StringFormat=Rodzaj: {0}, TargetNullValue=Rodzaj: ?}"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Temat i uwagi">
+                        <StackPanel>
+                            <TextBlock Text="{Binding SelectedItem.Temat, StringFormat=Temat: {0}, TargetNullValue=Temat: ?}"/>
+                            <TextBlock Text="{Binding SelectedItem.Uwagi, StringFormat=Uwagi: {0}, TargetNullValue=Uwagi: ?}"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </GroupBox>
+        </Border>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Margin="0,0,0,6">
+            <Button Content="Tylko dzisiaj"
+                    Width="110"
+                    Margin="0,0,6,0"
+                    Command="{Binding FilterTodayCommand}"/>
+
+            <Button Content="Tylko ten lektor"
+                    Width="130"
+                    Margin="0,0,6,0"
+                    Command="{Binding FilterSelectedTeacherCommand}"/>
+
+            <Button Content="Wyczyść filtry"
+                    Width="110"
+                    Command="{Binding ClearFiltersCommand}"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding List}"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  CanUserAddRows="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ZajeciaId}"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding DataDisplay}"/>
+                <DataGridTextColumn Header="Start" Binding="{Binding GodzinaStart}"/>
+                <DataGridTextColumn Header="Koniec" Binding="{Binding GodzinaKoniec}"/>
+                <DataGridTextColumn Header="Lektor" Binding="{Binding Lektor}"/>
+                <DataGridTextColumn Header="Sala" Binding="{Binding Sala}"/>
+                <DataGridTextColumn Header="Grupa" Binding="{Binding Grupa}"/>
+                <DataGridTextColumn Header="Temat" Binding="{Binding Temat}"/>
+                <DataGridTextColumn Header="Uczeń" Binding="{Binding Uczen}"/>
+                <DataGridTextColumn Header="Tryb" Binding="{Binding Tryb}"/>
+                <DataGridTextColumn Header="Dzień tyg." Binding="{Binding DzienTygodnia}"/>
+                <DataGridTextColumn Header="Rodzaj" Binding="{Binding RodzajZajec}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</views:WszystkieViewBase>

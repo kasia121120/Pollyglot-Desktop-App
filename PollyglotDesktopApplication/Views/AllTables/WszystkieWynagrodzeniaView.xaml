@@ -1,0 +1,111 @@
+﻿<views:WszystkieViewBase x:Class="PollyglotDesktopApp.Views.AllTables.WszystkieWynagrodzeniaView"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:views="clr-namespace:PollyglotDesktopApp.Views">
+
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style x:Key="RightAlignedCellStyle" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Right"/>
+            </Style>
+            <Style x:Key="RightHeaderStyle" TargetType="DataGridColumnHeader">
+                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            </Style>
+        </StackPanel.Resources>
+        <Border BorderBrush="DarkSlateGray" BorderThickness="1" Margin="0,0,0,10" Padding="8">
+            <StackPanel>
+                <TextBlock Text="Generowanie i raport wynagrodzen"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,6"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6" VerticalAlignment="Center">
+                    <TextBlock Text="Okres:" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                    <ComboBox ItemsSource="{Binding Okresy}"
+                              SelectedItem="{Binding Okres}"
+                              Width="150"
+                              Margin="0,0,12,0"/>
+                    <Button Content="Oblicz raport"
+                            Command="{Binding ObliczCommand}"
+                            Width="100"
+                            Padding="4,2"/>
+                    <Button Content="Eksport raportu (CSV)"
+                            Command="{Binding EksportWynagrodzenCommand}"
+                            Width="130"
+                            Padding="4,2"
+                            Margin="8,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Okres, StringFormat={}{0}}"
+                               VerticalAlignment="Center"
+                               Margin="0,0,12,0"/>
+                    <Button Content="Generuj wynagrodzenia"
+                            Command="{Binding GenerujWynagrodzeniaCommand}"
+                            Width="160"
+                            Padding="4,2"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="0,0,0,10" Padding="8">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                    <TextBlock Text="Kwota wynagrodzen:" Margin="0,0,6,0"/>
+                    <TextBlock Text="{Binding TotalKwota, StringFormat={} {0:N2}}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                    <TextBlock Text="Godziny:" Margin="0,0,6,0"/>
+                    <TextBlock Text="{Binding TotalGodzin, StringFormat={} {0:N2}}"/>
+                </StackPanel>
+                <TextBlock Text="Raport sumuje kwoty wynagrodzen lektorow za dany miesiac oraz przepracowane godziny."
+                           FontWeight="SemiBold"
+                           Margin="0,6,0,0"/>
+                <DataGrid AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Rows}"
+                          Margin="0,6,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Lektor" Binding="{Binding Nazwisko}" />
+                        <DataGridTextColumn Header="Imie" Binding="{Binding Imie}" />
+                        <DataGridTextColumn Header="Okres" Binding="{Binding Okres}" />
+                        <DataGridTextColumn Header="Godziny" Binding="{Binding LiczbaGodzin, StringFormat=N2}"
+                                            ElementStyle="{StaticResource RightAlignedCellStyle}"
+                                            HeaderStyle="{StaticResource RightHeaderStyle}" />
+                        <DataGridTextColumn Header="Stawka" Binding="{Binding StawkaGodzinowa, StringFormat=N2}"
+                                            ElementStyle="{StaticResource RightAlignedCellStyle}"
+                                            HeaderStyle="{StaticResource RightHeaderStyle}" />
+                        <DataGridTextColumn Header="Kwota" Binding="{Binding KwotaDoWyplaty, StringFormat=N2}"
+                                            ElementStyle="{StaticResource RightAlignedCellStyle}"
+                                            HeaderStyle="{StaticResource RightHeaderStyle}" />
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="Lista wszystkich wynagrodzen"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,4"/>
+
+        <DataGrid x:Name="ListDataGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding List}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding WynagrodzenieId}" />
+                <DataGridTextColumn Header="Lektor" Binding="{Binding Lektor}" />
+                <DataGridTextColumn Header="Okres" Binding="{Binding Okres}" />
+                <DataGridTextColumn Header="Liczba godzin" Binding="{Binding LiczbaGodzin, StringFormat=N2}"
+                                    ElementStyle="{StaticResource RightAlignedCellStyle}"
+                                    HeaderStyle="{StaticResource RightHeaderStyle}" />
+                <DataGridTextColumn Header="Stawka" Binding="{Binding StawkaGodzinowa, StringFormat=N2}"
+                                    ElementStyle="{StaticResource RightAlignedCellStyle}"
+                                    HeaderStyle="{StaticResource RightHeaderStyle}" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding KwotaDoWyplaty, StringFormat=N2}"
+                                    ElementStyle="{StaticResource RightAlignedCellStyle}"
+                                    HeaderStyle="{StaticResource RightHeaderStyle}" />
+                <DataGridTextColumn Header="Data wyplaty" Binding="{Binding DataWyplatyDisplay}" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+
+</views:WszystkieViewBase>
